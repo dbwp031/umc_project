@@ -4,14 +4,11 @@ import com.example.umc_project.domain.common.BaseEntity;
 import com.example.umc_project.domain.enums.Gender;
 import com.example.umc_project.domain.enums.MemberStatus;
 import com.example.umc_project.domain.enums.SocialType;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-
+@Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
