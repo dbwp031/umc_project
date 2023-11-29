@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/umc_project
+    url: jdbc:mysql://localhost:3306/hello-sql?createDatabaseIfNotExist=true
     username: root
-    password: rootroot
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   sql:
     init:
@@ -15,5 +15,5 @@ spring:
         format_sql: true
         use_sql_comments: true
         hbm2ddl:
-          auto: create
+          auto: update
         default_batch_fetch_size: 1000

@@ -2,6 +2,7 @@ package com.example.umc_project.web.dto;
 
 import com.example.umc_project.validation.annotation.ExistCategories;
 import lombok.Getter;
+import lombok.ToString;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -15,6 +16,8 @@ public class MemberRequestDTO {
             @NotBlank
             String name;
             @NotNull
+            Integer age;
+            @NotNull
             Integer gender;
             @NotNull
             Integer birthYear;
@@ -26,8 +29,11 @@ public class MemberRequestDTO {
             String address;
             @Size(min = 5, max = 12)
             String specAddress;
+            @NotNull
+            String email;
             @ExistCategories
             List<Long> preferCategory;
+
         }
 }
 

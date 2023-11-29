@@ -1,9 +1,7 @@
 package com.example.umc_project.web.controller;
 
 import com.example.umc_project.apiPayload.ApiResponse;
-import com.example.umc_project.converter.MemberConverter;
-import com.example.umc_project.domain.Member;
-import com.example.umc_project.service.MemberService.MemberService;
+import com.example.umc_project.service.MemberService.MemberCommandService;
 import com.example.umc_project.web.dto.MemberRequestDTO;
 import com.example.umc_project.web.dto.MemberResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +17,11 @@ import javax.validation.Valid;
 @Validated
 @RequestMapping("/members")
 @RestController
-public class RestMemberController {
-    private final MemberService memberService;
-    @PostMapping
-    public ApiResponse<MemberResponseDto.JoinResultDTO> join(@RequestBody @Valid MemberRequestDTO.JoinDto request) {
-//        Member member = memberService.joinMember(request);
-//        return ApiResponse.onSuccess(MemberConverter.toJoinResultDTO(member));
+public class MemberRestController {
+    private final MemberCommandService memberService;
+
+    @PostMapping("/")
+    public ApiResponse<MemberResponseDto.JoinResultDTO> join(@RequestBody @Valid MemberRequestDTO.JoinDto request){
+        return null;
     }
 }

@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,4 +23,7 @@ public class Store extends BaseEntity {
     private String address;
 
     private Float score;
+
+    @ManyToOne
+    private FoodCategory foodCategory;
 }

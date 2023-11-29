@@ -21,7 +21,7 @@ public class Member extends BaseEntity {
     private String name;
     private String address;
     private String specAddress;
-
+    private Integer age;
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
