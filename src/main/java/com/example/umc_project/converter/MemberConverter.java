@@ -5,13 +5,13 @@ import com.example.umc_project.domain.enums.Gender;
 import com.example.umc_project.domain.enums.MemberStatus;
 import com.example.umc_project.domain.enums.SocialType;
 import com.example.umc_project.web.dto.MemberRequestDTO;
-import com.example.umc_project.web.dto.MemberResponseDto;
+import com.example.umc_project.web.dto.MemberResponseDTO;
 
 import java.time.LocalDateTime;
 
 public class MemberConverter {
-    public static MemberResponseDto.JoinResultDTO toJoinResultDTO(Member member) {
-        return MemberResponseDto.JoinResultDTO.builder()
+    public static MemberResponseDTO.JoinResultDTO toJoinResultDTO(Member member) {
+        return MemberResponseDTO.JoinResultDTO.builder()
                 .memberId(member.getId())
                 .createdAt(LocalDateTime.now())
                 .build();
