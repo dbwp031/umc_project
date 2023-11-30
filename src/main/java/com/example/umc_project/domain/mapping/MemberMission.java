@@ -4,13 +4,11 @@ import com.example.umc_project.domain.Member;
 import com.example.umc_project.domain.Mission;
 import com.example.umc_project.domain.common.BaseEntity;
 import com.example.umc_project.domain.enums.MissionStatus;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)

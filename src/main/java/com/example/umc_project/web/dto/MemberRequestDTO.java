@@ -33,7 +33,14 @@ public class MemberRequestDTO {
             String email;
             @ExistCategories
             List<Long> preferCategory;
+        }
+        @Getter
+        public static class EnrollMissionDto{
+            @NotNull
+            Long memberId;
 
+            @NotNull
+            Long missionId;
         }
 }
 
