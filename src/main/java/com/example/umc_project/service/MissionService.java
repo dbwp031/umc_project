@@ -2,6 +2,7 @@ package com.example.umc_project.service;
 
 import com.example.umc_project.apiPayload.code.status.ErrorStatus;
 import com.example.umc_project.apiPayload.exception.handler.MemberHandler;
+import com.example.umc_project.apiPayload.exception.handler.MissionHandler;
 import com.example.umc_project.apiPayload.exception.handler.StoreHandler;
 import com.example.umc_project.converter.MissionConverter;
 import com.example.umc_project.converter.ReviewConverter;
@@ -27,8 +28,13 @@ public class MissionService {
     public Mission postNewMission(MissionRequestDTO.PostNewMissionDto request){
         Mission mission = MissionConverter.toMission(request);
         Store store = storeRepository.findById(request.getStoreId())
-                .orElseThrow(()-> new IllegalArgumentException());
+                .orElseThrow(()-> new StoreHandler(ErrorStatus.STORE_NOT_FOUND));
         mission.setStore(store);
         return missionRepository.save(mission);
+    }
+
+    public Mission findById(Long missionId) {
+        return missionRepository.findById(missionId)
+                .orElseThrow(() -> new MissionHandler(ErrorStatus.MISSION_NOT_FOUND));
     }
 }
