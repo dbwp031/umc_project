@@ -1,18 +1,17 @@
-package com.example.umc_project.domain.mapping;
+package com.example.umc_project.domain;
 
-import com.example.umc_project.domain.FoodCategory;
-import com.example.umc_project.domain.Member;
 import com.example.umc_project.domain.common.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+
+@ToString
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
-public class LikedFoodCategory extends BaseEntity {
+public class Review extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +19,7 @@ public class LikedFoodCategory extends BaseEntity {
     @ManyToOne
     private Member member;
 
-    @ManyToOne
-    private FoodCategory foodCategory;
+    private String content;
+
+
 }

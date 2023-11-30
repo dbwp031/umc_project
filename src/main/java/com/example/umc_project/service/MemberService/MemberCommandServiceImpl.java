@@ -2,6 +2,7 @@ package com.example.umc_project.service.MemberService;
 
 import com.example.umc_project.apiPayload.code.status.ErrorStatus;
 import com.example.umc_project.apiPayload.exception.handler.FoodCategoryHandler;
+import com.example.umc_project.converter.LikedFoodCategoryConverter;
 import com.example.umc_project.converter.MemberConverter;
 import com.example.umc_project.domain.FoodCategory;
 import com.example.umc_project.domain.Member;
@@ -32,8 +33,7 @@ public class MemberCommandServiceImpl implements MemberCommandService {
                 }).collect(Collectors.toList());
 
         List<LikedFoodCategory> likedFoodCategoryList = LikedFoodCategoryConverter.toLikedFoodCategoryList(foodCategoryList);
-
-        likedFoodCategoryList.forEach(m -> {m.setMember(newMember)});
+        likedFoodCategoryList.forEach(likedFood -> {likedFood.setMember(newMember);});
         return memberRepository.save(newMember);
     }
 }
