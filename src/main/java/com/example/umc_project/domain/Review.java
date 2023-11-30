@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @ToString
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -18,8 +19,8 @@ public class Review extends BaseEntity {
 
     @ManyToOne
     private Member member;
+    @ManyToOne
+    private Store store;
 
     private String content;
-
-
 }
