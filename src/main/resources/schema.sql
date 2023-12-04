@@ -94,6 +94,7 @@ create table review (
                         created_at datetime(6),
                         updated_at datetime(6),
                         content varchar(255),
+                        score float,
                         member_id bigint,
                         store_id bigint,
                         primary key (id)

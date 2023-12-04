@@ -67,12 +67,19 @@ INSERT INTO store_region (created_at, updated_at, region_id, store_id) VALUES
                                                                            (NOW(), NOW(), 3, 5);
 
 
-INSERT INTO review (created_at, updated_at, content, member_id, store_id) VALUES
-                                                                              (NOW(), NOW(), '정말 맛있어요!', 1, 1),
-                                                                              (NOW(), NOW(), '서비스도 좋고 음식도 맛있어요!', 2, 2),
-                                                                              (NOW(), NOW(), '가격 대비 만족스러워요.', 3, 3),
-                                                                              (NOW(), NOW(), '분위기가 좋네요.', 4, 4),
-                                                                              (NOW(), NOW(), '다음에 또 방문하고 싶어요.', 1, 5);
+INSERT INTO review (created_at, updated_at, score,content, member_id, store_id) VALUES
+                                                                              (NOW(), NOW(),4.5, '정말 맛있어요!', 1, 1),
+                                                                              (NOW(), NOW(),4.5, '정말 1!', 1, 1),
+                                                                              (NOW(), NOW(),4.5, '정말 2!', 1, 1),
+                                                                              (NOW(), NOW(),4.5, '정말 3!', 1, 1),
+                                                                              (NOW(), NOW(),4.5, '정말 4!', 1, 1),
+                                                                              (NOW(), NOW(),4.5, '정말 5!', 1, 1),
+                                                                              (NOW(), NOW(),4.5, '정말 6!', 1, 1),
+                                                                              (NOW(), NOW(),4.5, '정말 7!', 1, 1),
+                                                                              (NOW(), NOW(),5.0, '서비스도 좋고 음식도 맛있어요!', 2, 2),
+                                                                              (NOW(), NOW(),4.8, '가격 대비 만족스러워요.', 3, 3),
+                                                                              (NOW(), NOW(),5.0, '분위기가 좋네요.', 4, 4),
+                                                                              (NOW(), NOW(),4.4, '다음에 또 방문하고 싶어요.', 1, 5);
 
 
 -- Mission 테이블에 5개의 예시 데이터 추가
