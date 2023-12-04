@@ -10,5 +10,4 @@ public interface MemberCommandService {
     Member joinMember(MemberRequestDTO.JoinDto request);
     MemberMission enrollMission(MemberRequestDTO.EnrollMissionDto request);
 
-    Member findById(Long memberId);
 }

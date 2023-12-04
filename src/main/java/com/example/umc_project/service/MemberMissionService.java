@@ -6,6 +6,7 @@ import com.example.umc_project.domain.enums.MissionStatus;
 import com.example.umc_project.domain.mapping.MemberMission;
 import com.example.umc_project.repository.MemberMissionRepository;
 import com.example.umc_project.service.MemberService.MemberCommandService;
+import com.example.umc_project.service.MemberService.MemberQueryService;
 import com.example.umc_project.web.dto.MemberRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class MemberMissionService {
-    private final MemberCommandService memberCommandService;
+    private final MemberQueryService memberQueryService;
     private final MissionService missionService;
     private final MemberMissionRepository memberMissionRepository;
     public Boolean checkAlreadyOnGoing(Long memberId, Long missionId){
-        Member member = memberCommandService.findById(memberId);
+        Member member = memberQueryService.findById(memberId);
         Mission mission = missionService.findById(missionId);
 
         Optional<MemberMission> optionalMemberMission = memberMissionRepository.findByMember_IdAndMission_Id(memberId, missionId);
@@ -28,7 +29,7 @@ public class MemberMissionService {
     }
 
     public MemberMission save(MemberRequestDTO.EnrollMissionDto request){
-        Member member = memberCommandService.findById(request.getMemberId());
+        Member member = memberQueryService.findById(request.getMemberId());
         Mission mission = missionService.findById(request.getMissionId());
         MemberMission memberMission = MemberMission.builder()
                 .member(member)

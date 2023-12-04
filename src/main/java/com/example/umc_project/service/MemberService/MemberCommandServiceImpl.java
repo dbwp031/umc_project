@@ -57,10 +57,4 @@ public class MemberCommandServiceImpl implements MemberCommandService {
         memberMission.setMission(mission);
         return memberMissionRepository.save(memberMission);
     }
-
-    @Override
-    public Member findById(Long memberId) {
-        return memberRepository.findById(memberId)
-                .orElseThrow(()->new MemberHandler(ErrorStatus.MEMBER_NOT_FOUND));
-    }
 }
