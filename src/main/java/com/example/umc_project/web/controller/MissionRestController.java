@@ -10,8 +10,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 
 @RequiredArgsConstructor
@@ -21,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MissionRestController {
     private final MissionService missionService;
     @PostMapping
-    public ApiResponse<MissionResponseDTO.PostNewMissionResultDto> postNewMission(MissionRequestDTO.PostNewMissionDto request){
+    public ApiResponse<MissionResponseDTO.PostNewMissionResultDto> postNewMission(@RequestBody @Valid MissionRequestDTO.PostNewMissionDto request){
         Mission mission = missionService.postNewMission(request);
         return ApiResponse.onSuccess(MissionConverter.toNewPostMissionResultDto(mission));
     }

@@ -84,8 +84,8 @@ INSERT INTO mission (created_at, updated_at, content, deadline, reward, store_id
                                                                                       (NOW(), NOW(), '푸드 페스티벌 참가', NOW(), 3.3, 5);
 -- Member_Mission 테이블에 5개의 예시 데이터 추가
 INSERT INTO Member_Mission (created_at, updated_at, status, member_id, mission_id) VALUES
-                                                                                       (NOW(), NOW(), '진행 중', 1, 1),
-                                                                                       (NOW(), NOW(), '완료', 2, 2),
-                                                                                       (NOW(), NOW(), '진행 중', 3, 3),
-                                                                                       (NOW(), NOW(), '미완료', 4, 4),
-                                                                                       (NOW(), NOW(), '완료', 1, 3);
+                                                                                       (NOW(), NOW(), 'ONGOING', 1, 1),
+                                                                                       (NOW(), NOW(), 'SUCCESS', 2, 2),
+                                                                                       (NOW(), NOW(), 'ONGOING', 3, 3),
+                                                                                       (NOW(), NOW(), 'FAILED', 4, 4),
+                                                                                       (NOW(), NOW(), 'SUCCESS', 1, 3);

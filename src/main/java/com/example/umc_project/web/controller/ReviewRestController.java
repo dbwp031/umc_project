@@ -21,7 +21,7 @@ import javax.validation.Valid;
 @RequestMapping("/reviews")
 @RestController
 public class ReviewRestController {
-    private ReviewService reviewService;
+    private final ReviewService reviewService;
     @PostMapping
     public ApiResponse<ReviewResponseDTO.PostNewReviewResultDto> post(@RequestBody @Valid ReviewRequestDTO.PostNewReviewDto request){
         Review review = reviewService.postNewReview(request);

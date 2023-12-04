@@ -33,7 +33,7 @@ public class MemberRestController {
         return ApiResponse.onSuccess(MemberConverter.toJoinResultDTO(member));
     }
 
-    @PostMapping("/members/missions")
+    @PostMapping("/missions")
     public ApiResponse<MemberResponseDTO.EnrollMissionResultDTO> enrollMission(@RequestBody @AlreadyOnGogingMissions MemberRequestDTO.EnrollMissionDto request){
         MemberMission memberMission = memberMissionService.save(request);
         return ApiResponse.onSuccess(MemberMissionConverter.toEnrollMissionResultDTO(memberMission));
