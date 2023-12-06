@@ -16,13 +16,14 @@ import com.example.umc_project.web.dto.MemberRequestDTO;
 import com.example.umc_project.web.dto.MemberResponseDTO;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
+@Slf4j
 @RequiredArgsConstructor
 @Validated
 @RequestMapping("/members")
@@ -53,16 +54,18 @@ public class MemberRestController {
      */
     @GetMapping("/{memberId}/reviews")
     public ApiResponse<MemberResponseDTO.ReviewPreviewListDTO> getReviewList(@PathVariable Long memberId,
-                                                                             @Parameter(description = "페이지 번호") @RequestParam(required = false, defaultValue = "0", value="page") @CheckPageNumber int pageNumber,
-                                                                             @Parameter(description = "페이지 번호") @RequestParam(required = false, defaultValue = "3", value="size") int pageSize
+             @Parameter(description = "페이지 번호") @RequestParam(required = false, defaultValue = "0", value="page") @CheckPageNumber int pageNumber,
+             @Parameter(description = "페이지 번호") @RequestParam(required = false, defaultValue = "3", value="size") int pageSize
                                                                              ) {
+        pageNumber -=1;
         return ApiResponse.onSuccess(MemberConverter.toReviewPreviewListDTO(memberQueryService.getAllReviewsByMemberId(memberId, pageNumber, pageSize)));
     }
     @GetMapping("/{memberId}/missions")
     public ApiResponse<MemberResponseDTO.OnGoingMissionListPagingDTO> getOnGoingMissionList(@PathVariable Long memberId,
-                     @Parameter(description = "페이지 번호") @RequestParam(required = false, defaultValue = "0", value="page") int pageNumber,
+                     @Parameter(description = "페이지 번호") @RequestParam(required = false, defaultValue = "0", value="page") @CheckPageNumber int pageNumber,
                      @Parameter(description = "페이지 번호") @RequestParam(required = false, defaultValue = "3", value="size") int pageSize
     ) {
+        pageNumber -=1;
         Page<MemberMission> missionPage = memberQueryService.getOnGoingMissionList(memberId, pageNumber, pageSize);
         return ApiResponse.onSuccess(MemberConverter.toOnGoingMissionListPagingDTO(memberId, missionPage));
     }
