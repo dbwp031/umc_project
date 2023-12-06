@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
     Page<Review> findAllByStoreId(Long storeId, Pageable pageable);
+
+    Page<Review> findAllByMember_Id(Long memberId, Pageable pageable);
 }

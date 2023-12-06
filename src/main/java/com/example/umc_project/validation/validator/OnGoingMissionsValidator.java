@@ -36,6 +36,7 @@ public class OnGoingMissionsValidator implements ConstraintValidator<AlreadyOnGo
         if (alreadyOngoing){
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate(ErrorStatus.MISSION_ALREADY_ONGOING.toString()).addConstraintViolation();
+
         }
         return !alreadyOngoing;
     }
