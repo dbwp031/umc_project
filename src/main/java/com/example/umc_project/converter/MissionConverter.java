@@ -19,4 +19,15 @@ public class MissionConverter {
                 .createdAt(mission.getCreatedAt())
                 .build();
     }
+
+    public static MissionResponseDTO.MissionPreviewDTO toMissionPreviewDTO(Mission mission) {
+        return MissionResponseDTO.MissionPreviewDTO.builder()
+                .missionId(mission.getId())
+                .storeId(mission.getStore().getId())
+                .content(mission.getContent())
+                .reward(mission.getReward())
+                .deadLine(mission.getDeadline())
+                .createdAt(mission.getCreatedAt())
+                .build();
+    }
 }

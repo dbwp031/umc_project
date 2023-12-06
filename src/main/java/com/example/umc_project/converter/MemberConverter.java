@@ -5,8 +5,10 @@ import com.example.umc_project.domain.Review;
 import com.example.umc_project.domain.enums.Gender;
 import com.example.umc_project.domain.enums.MemberStatus;
 import com.example.umc_project.domain.enums.SocialType;
+import com.example.umc_project.domain.mapping.MemberMission;
 import com.example.umc_project.web.dto.MemberRequestDTO;
 import com.example.umc_project.web.dto.MemberResponseDTO;
+import com.example.umc_project.web.dto.MissionResponseDTO;
 import com.example.umc_project.web.dto.StoreResponseDTO;
 import org.springframework.data.domain.Page;
 
@@ -58,6 +60,21 @@ public class MemberConverter {
                 .totalPage(memberReviewList.getTotalPages())
                 .totalElements(memberReviewList.getTotalElements())
                 .reviewList(reviewPreviewDTOList)
+                .build();
+    }
+
+    public static MemberResponseDTO.OnGoingMissionListPagingDTO toOnGoingMissionListPagingDTO(Long memberId, Page<MemberMission> missionPage) {
+        List<MissionResponseDTO.MissionPreviewDTO> missionPreviewDTOList = missionPage.stream()
+                .map(mm -> MissionConverter.toMissionPreviewDTO(mm.getMission())
+                ).collect(Collectors.toList());
+
+        return MemberResponseDTO.OnGoingMissionListPagingDTO.builder()
+                .isLast(missionPage.isLast())
+                .isFirst(missionPage.isFirst())
+                .totalPage(missionPage.getTotalPages())
+                .totalElements(missionPage.getTotalElements())
+                .memberId(memberId)
+                .missionPreviewDTOList(missionPreviewDTOList)
                 .build();
     }
 }

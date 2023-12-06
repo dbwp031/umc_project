@@ -2,8 +2,10 @@ package com.example.umc_project.service.StoreService;
 
 import com.example.umc_project.apiPayload.code.status.ErrorStatus;
 import com.example.umc_project.apiPayload.exception.handler.StoreHandler;
+import com.example.umc_project.domain.Mission;
 import com.example.umc_project.domain.Review;
 import com.example.umc_project.domain.Store;
+import com.example.umc_project.repository.MissionRepository;
 import com.example.umc_project.repository.ReviewRepository;
 import com.example.umc_project.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class StoreQueryServiceImpl implements StoreQueryService{
     private final StoreRepository storeRepository;
     private final ReviewRepository reviewRepository;
+    private final MissionRepository missionRepository;
     @Override
     public Store findByStoreId(Long storeId) {
         return storeRepository.findById(storeId)
@@ -31,5 +34,12 @@ public class StoreQueryServiceImpl implements StoreQueryService{
         Pageable pageable = PageRequest.of(pageNumber, pageSize);
         Page<Review> storePage = reviewRepository.findAllByStoreId(storeId, pageable);
         return storePage;
+    }
+
+    @Override
+    public Page<Mission> getMissionList(Long storeId, int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<Mission> missionPage = missionRepository.findAllByStoreId(storeId, pageable);
+        return missionPage;
     }
 }

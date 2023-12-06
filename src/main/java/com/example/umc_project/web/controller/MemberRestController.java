@@ -4,6 +4,7 @@ import com.example.umc_project.apiPayload.ApiResponse;
 import com.example.umc_project.converter.MemberConverter;
 import com.example.umc_project.converter.MemberMissionConverter;
 import com.example.umc_project.domain.Member;
+import com.example.umc_project.domain.Mission;
 import com.example.umc_project.domain.Review;
 import com.example.umc_project.domain.mapping.MemberMission;
 import com.example.umc_project.service.MemberMissionService;
@@ -56,5 +57,13 @@ public class MemberRestController {
                                                                              @Parameter(description = "페이지 번호") @RequestParam(required = false, defaultValue = "3", value="size") int pageSize
                                                                              ) {
         return ApiResponse.onSuccess(MemberConverter.toReviewPreviewListDTO(memberQueryService.getAllReviewsByMemberId(memberId, pageNumber, pageSize)));
+    }
+    @GetMapping("/{memberId}/missions")
+    public ApiResponse<MemberResponseDTO.OnGoingMissionListPagingDTO> getOnGoingMissionList(@PathVariable Long memberId,
+                     @Parameter(description = "페이지 번호") @RequestParam(required = false, defaultValue = "0", value="page") int pageNumber,
+                     @Parameter(description = "페이지 번호") @RequestParam(required = false, defaultValue = "3", value="size") int pageSize
+    ) {
+        Page<MemberMission> missionPage = memberQueryService.getOnGoingMissionList(memberId, pageNumber, pageSize);
+        return ApiResponse.onSuccess(MemberConverter.toOnGoingMissionListPagingDTO(memberId, missionPage));
     }
 }

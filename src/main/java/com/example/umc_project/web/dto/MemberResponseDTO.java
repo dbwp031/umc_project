@@ -38,4 +38,16 @@ public class MemberResponseDTO {
         Long totalElements;
         List<StoreResponseDTO.ReviewPreviewDTO> reviewList;
     }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class OnGoingMissionListPagingDTO {
+        Boolean isLast;
+        Boolean isFirst;
+        Integer totalPage;
+        Long totalElements;
+        Long memberId;
+        List<MissionResponseDTO.MissionPreviewDTO> missionPreviewDTOList;
+    }
 }

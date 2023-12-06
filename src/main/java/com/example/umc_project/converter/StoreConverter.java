@@ -1,7 +1,8 @@
 package com.example.umc_project.converter;
 
+import com.example.umc_project.domain.Mission;
 import com.example.umc_project.domain.Review;
-import com.example.umc_project.web.dto.ReviewRequestDTO;
+import com.example.umc_project.web.dto.MissionResponseDTO;
 import com.example.umc_project.web.dto.StoreResponseDTO;
 import org.springframework.data.domain.Page;
 
@@ -18,16 +19,30 @@ public class StoreConverter {
                 .createdAt(review.getCreatedAt())
                 .build();
     }
-    public static StoreResponseDTO.ReviewPreviewListDTO toReviewPreviewListDTO(Page<Review> reviewPage){
+    public static StoreResponseDTO.ReviewPreviewListPagingDTO toReviewPreviewListDTO(Page<Review> reviewPage){
         List<StoreResponseDTO.ReviewPreviewDTO> reviewPreviewDTOList = reviewPage.stream()
                 .map(StoreConverter::toReviewPreviewDTO).collect(Collectors.toList());
 
-        return StoreResponseDTO.ReviewPreviewListDTO.builder()
+        return StoreResponseDTO.ReviewPreviewListPagingDTO.builder()
                 .isLast(reviewPage.isLast())
                 .isFirst(reviewPage.isFirst())
                 .totalPage(reviewPage.getTotalPages())
                 .totalElements(reviewPage.getTotalElements())
                 .reviewList(reviewPreviewDTOList)
+                .build();
+    }
+
+    public static StoreResponseDTO.MissionListPagingDTO toMissionListPagingDTO(Page<Mission> missionPage) {
+        List<MissionResponseDTO.MissionPreviewDTO> missionPreviewDTOList = missionPage.stream()
+                .map(MissionConverter::toMissionPreviewDTO)
+                .collect(Collectors.toList());
+
+        return StoreResponseDTO.MissionListPagingDTO.builder()
+                .isLast(missionPage.isLast())
+                .isFirst(missionPage.isFirst())
+                .totalPage(missionPage.getTotalPages())
+                .totalElements(missionPage.getTotalElements())
+                .missionList(missionPreviewDTOList)
                 .build();
     }
 }

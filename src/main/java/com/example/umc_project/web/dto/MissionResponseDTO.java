@@ -16,4 +16,16 @@ public class MissionResponseDTO {
         Long missionId;
         LocalDateTime createdAt;
     }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionPreviewDTO {
+        Long missionId;
+        Long storeId;
+        String content;
+        Float reward;
+        LocalDateTime deadLine;
+        LocalDateTime createdAt;
+    }
 }

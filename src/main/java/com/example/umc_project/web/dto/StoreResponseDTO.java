@@ -24,11 +24,22 @@ public class StoreResponseDTO {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class ReviewPreviewListDTO{
+    public static class ReviewPreviewListPagingDTO {
         Boolean isLast;
         Boolean isFirst;
         Integer totalPage;
         Long totalElements;
         List<ReviewPreviewDTO> reviewList;
+    }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class MissionListPagingDTO {
+        Boolean isLast;
+        Boolean isFirst;
+        Integer totalPage;
+        Long totalElements;
+        List<MissionResponseDTO.MissionPreviewDTO> missionList;
     }
 }
